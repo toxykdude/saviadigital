@@ -1846,26 +1846,25 @@ function selectService(value) {
     const btn = $('#submitBtn');
     btn.classList.add('loading'); btn.disabled = true;
     btn.firstChild.textContent = 'Enviando… ';
-    setTimeout(() => {
-      const lead = {
-        id: (crypto.randomUUID ? crypto.randomUUID() : 'lead-' + Date.now()),
-        date: new Date().toISOString(),
-        nombre: $('#f-nombre').value.trim(), empresa: $('#f-empresa').value.trim(),
-        email: $('#f-email').value.trim(), telefono: $('#f-tel').value.trim(),
-        servicio: $('#f-servicio').value, presupuesto: $('#f-presupuesto').value || 'Aún por definir',
-        mensaje: $('#f-msj').value.trim()
-      };
-      try {
-        const leads = JSON.parse(localStorage.getItem('salvia_leads') || '[]');
-        leads.push(lead); localStorage.setItem('salvia_leads', JSON.stringify(leads));
-      } catch (_) { /* storage unavailable — lead still confirmed in UI */ }
-      btn.classList.remove('loading'); btn.disabled = false;
-      btn.firstChild.textContent = 'Solicitar una propuesta ';
-      $('#sucService').textContent = lead.servicio.toUpperCase();
-      form.style.display = 'none';
-      success.classList.add('show');
-      toast('Solicitud registrada — te contactamos en menos de 24 h');
-    }, 1300);
+    const lead = {
+      id: (crypto.randomUUID ? crypto.randomUUID() : 'lead-' + Date.now()),
+      date: new Date().toISOString(),
+      nombre: $('#f-nombre').value.trim(), empresa: $('#f-empresa').value.trim(),
+      email: $('#f-email').value.trim(), telefono: $('#f-tel').value.trim(),
+      servicio: $('#f-servicio').value, presupuesto: $('#f-presupuesto').value || 'Aún por definir',
+      mensaje: $('#f-msj').value.trim()
+    };
+    const FORM_ENDPOINT = ''; // e.g. 'https://salvia-form.YOURNAME.workers.dev' — set once the worker is live
+    const saveLead = l => { try { const a = JSON.parse(localStorage.getItem('salvia_leads') || '[]'); a.push(l); localStorage.setItem('salvia_leads', JSON.stringify(a)); } catch (_) { /* storage unavailable */ } };
+    const resetBtn = () => { btn.classList.remove('loading'); btn.disabled = false; btn.firstChild.textContent = 'Solicitar una propuesta '; };
+    const showSuccess = l => { resetBtn(); $('#sucService').textContent = l.servicio.toUpperCase(); form.style.display = 'none'; success.classList.add('show'); toast('Solicitud registrada — te contactamos en menos de 24 h'); };
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); saveLead(lead); showSuccess(lead); })
+        .catch(() => { resetBtn(); toast('No se pudo enviar — reintenta en un momento o escríbenos por WhatsApp'); });
+    } else {
+      setTimeout(() => { saveLead(lead); showSuccess(lead); }, 1300);
+    }
   });
   $('#resetForm').addEventListener('click', () => {
     form.reset();
