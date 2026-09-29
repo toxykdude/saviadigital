@@ -22,7 +22,7 @@ function buildBody(d) {
 }
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     if (request.method !== 'POST') return new Response('Method not allowed', { status: 405 });
     const origin = request.headers.get('Origin') || '';
     if (origin && !ALLOWED_ORIGINS.includes(origin)) return new Response('Forbidden', { status: 403 });
@@ -34,7 +34,7 @@ export default {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer ' + RESEND_API_KEY, // secret injected by Cloudflare
+        'Authorization': 'Bearer ' + env.RESEND_API_KEY, // secret injected by Cloudflare
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({

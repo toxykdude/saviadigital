@@ -1854,7 +1854,7 @@ function selectService(value) {
       servicio: $('#f-servicio').value, presupuesto: $('#f-presupuesto').value || 'Aún por definir',
       mensaje: $('#f-msj').value.trim()
     };
-    const FORM_ENDPOINT = ''; // e.g. 'https://salvia-form.YOURNAME.workers.dev' — set once the worker is live
+    const FORM_ENDPOINT = 'https://salvia-form.saviadigital.workers.dev';
     const saveLead = l => { try { const a = JSON.parse(localStorage.getItem('salvia_leads') || '[]'); a.push(l); localStorage.setItem('salvia_leads', JSON.stringify(a)); } catch (_) { /* storage unavailable */ } };
     const resetBtn = () => { btn.classList.remove('loading'); btn.disabled = false; btn.firstChild.textContent = 'Solicitar una propuesta '; };
     const showSuccess = l => { resetBtn(); $('#sucService').textContent = l.servicio.toUpperCase(); form.style.display = 'none'; success.classList.add('show'); toast('Solicitud registrada — te contactamos en menos de 24 h'); };
