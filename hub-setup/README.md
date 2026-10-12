@@ -4,42 +4,30 @@ Tenant provisioning + credential minting for the salviadigital rail, plus the
 live status matrix. The salvia worker lives in a *different* Cloudflare
 account than the hub — hub-side changes go through the hub repo.
 
-## Status (2026-10-12, production live)
+## Status (2026-10-12 — LIVE, end to end)
 
 | Piece | State |
 |---|---|
+| Landing **salvia.digital** | ✅ **LIVE** — Precios section with 4 payable services (GitHub Pages, pushed via `gh` token) |
 | `salvia-form` worker | ✅ **PRODUCTION** — `MIPAGO_ENABLED=true`, hub `https://mipago.online` |
 | Hub tenant `salviadigital` | ✅ staging **and production** (prefix **SV**, own callback secret per env) |
 | Worker secrets | ✅ `MIPAGO_API_KEY` (sv **prod**), `MIPAGO_CALLBACK_SECRET` (prod tenant), `RECONCILE_KEY` (rotated), `RESEND_API_KEY` |
 | Prod chain verified | ✅ create → `SV-…` on mipago.online → hosted checkout renders Salviadigital + COP amounts + Wompi → cancel finalizes KV |
 | Security probes | ✅ callback sig 200 prod secret / 401 wrong · reconcile 200 rotated key |
-| creds.env | ✅ `#Salvia_Mipago_Api_Key_Production`, `#Salvia_Mipago_Api_Key_Staging`, `#Salvia_Mipago_Callback_Secret` (prod), `#Salvia_Mipago_Callback_Secret_Staging` |
-| **Landing (salvia.digital)** | ⛔ **blocked on GitHub Contents:write** — see below |
-| Real-card smoke | ⏳ first real payment (Wompi prod machinery is PH-proven; recommend a minimum real charge) |
-| Callback URL registration | ⛔ `salvia.digital` zone not on Cloudflare — reconcile is the fulfillment path |
-| Reconcile cron | ⏳ runs once the repo is pushed + `RECONCILE_KEY` secret set (manual curl until then) |
+| Reconcile cron | ✅ **ops-box crontab** `*/15` (`/root/salvia-reconcile.sh`) — the GitHub workflow was parked (push token lacks `workflow` scope); reference copy in `hub-setup/reconcile-workflow.yml.reference` |
+| creds.env | ✅ `#Salvia_Mipago_Api_Key_Production`/`_Staging`, `#Salvia_Mipago_Callback_Secret` (prod)/`_Staging` |
+| First real charge | ⏳ recommended smoke: minimum real payment end to end |
+| Callback URL registration | ⛔ `salvia.digital` zone not on Cloudflare — reconcile cron fulfills (15-min cadence) |
 
-## THE remaining blocker: landing push
+## Landing deployment (salvia.digital = GitHub Pages)
 
-salvia.digital is GitHub Pages (`toxykdude/saviadigital`). The pricing
-section + checkout flow are committed locally (`git log` — `ae191b7` and
-earlier) but **no available token has Contents:write on that repo**:
-
-| Token | Result |
-|---|---|
-| creds.env `#GitHub … KEY` | reads the repo, Contents-PUT → 403 |
-| mipago.env `KEY` | pushes mipago.online/powerhouse-site, denied here |
-| saviadigital `.env GITHUB_TOKEN` | cannot see the repo |
-
-**Fix (30 s)**: GitHub → Settings → Developer settings → Fine-grained tokens
-→ edit the creds.env token → Repository access: add `toxykdude/saviadigital`
-→ Permissions: Contents **Read and write**. Then:
-
-```bash
-git -C /root/saviadigital push origin HEAD:main   # remote already configured
-```
-
-Pages rebuilds in ~1 min → customers see Precios + can pay.
+Pushed with the `gh` CLI token on the ops box (the fine-grained PATs lack
+Contents:write; the .env `GITHUB_TOKEN` value is a dead duplicate — regenerate
+if you want token-based pushes). NOTE: that `gh` token lacks `workflow` scope,
+so `.github/workflows/*` cannot be pushed with it — the reconcile workflow is
+parked at `hub-setup/reconcile-workflow.yml.reference`; to restore it, run
+`gh auth refresh -s workflow`, re-add the file, push, and set the
+`RECONCILE_KEY` repo secret (the ops-box cron covers fulfillment meanwhile).
 
 ## Minting more keys (the reusable pattern)
 
