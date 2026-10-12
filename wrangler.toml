@@ -2,3 +2,33 @@ name = "salvia-form"
 main = "worker/index.js"
 compatibility_date = "2026-09-01"
 workers_dev = true
+
+[vars]
+# Production hub + production SV tenant. Staging credentials are archived in
+# ~/powerhouse-web/creds.env (#Salvia_*_Staging) for sandbox passes.
+MIPAGO_ENABLED = "true"
+MIPAGO_API_URL = "https://mipago.online"
+SITE_URL = "https://salvia.digital"
+
+# Payment registry + callback dedup. Create it once and paste the real id:
+#   npx wrangler kv namespace create PAYMENTS_KV
+[[kv_namespaces]]
+binding = "PAYMENTS_KV"
+id = "a63e1ec31e14487f9cef3dae0320ef2b"
+
+# REQUIRED for the hub callback: mipago.online is itself a Cloudflare Worker,
+# and the edge blocks Workers→*.workers.dev fetches (error 1042). The callback
+# URL registered on the hub must be a custom domain, e.g.
+#   https://salvia.digital/api/payments/callback
+# Uncomment once the salvia.digital zone lives in this Cloudflare account
+# (Workers routes take precedence over Pages on the same hostname):
+#
+# routes = [
+#   { pattern = "salvia.digital/api/*", zone_name = "salvia.digital" }
+# ]
+
+# Secrets (set via dashboard → Encrypt, or `wrangler secret put`):
+#   RESEND_API_KEY          — existing, sends lead + payment emails
+#   MIPAGO_API_KEY          — tenant key from the hub (staging first)
+#   MIPAGO_CALLBACK_SECRET  — 64-hex, must EQUAL the hub tenant callback_secret (D1)
+#   RECONCILE_KEY           — random string, used by the GitHub Actions cron

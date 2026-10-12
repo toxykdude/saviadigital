@@ -316,6 +316,42 @@ body.ready .hud{animation:fadeUp .9s var(--ease) 1.4s forwards}
 @media(max-width:1100px){.span7,.span5,.span4,.span8{grid-column:span 6}.span12{grid-column:span 12}}
 @media(max-width:640px){.p-grid{grid-template-columns:1fr}.span7,.span5,.span4,.span8,.span12{grid-column:span 1}.span12{flex-direction:column}.span12 .p-media{width:100%;aspect-ratio:16/10;min-height:0}}
 
+/* ---------- Pricing ---------- */
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.price-card{border:1px solid var(--line);border-radius:12px;background:var(--bg2);padding:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;position:relative;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.price-card:hover{transform:translateY(-5px);border-color:rgba(44,245,155,.4);box-shadow:0 18px 44px -22px rgba(0,0,0,.9)}
+.price-tag{font:500 10px var(--fm);letter-spacing:.18em;color:var(--green);margin-bottom:14px}
+.price-card h3{font:600 1.15rem var(--fd);letter-spacing:-.015em}
+.price-hook{color:var(--muted);font-size:.9rem;line-height:1.6;margin-top:7px}
+.price-amount{margin-top:20px;display:flex;align-items:baseline;gap:8px}
+.price-amount b{font:600 clamp(1.6rem,2.3vw,2rem)/1 var(--fm);color:var(--green);letter-spacing:-.03em}
+.price-amount span{font:500 10px var(--fm);letter-spacing:.14em;color:var(--dim)}
+.price-feats{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:18px;flex:1}
+.price-feats li{display:flex;gap:10px;color:var(--muted);font-size:.88rem;line-height:1.5}
+.price-feats li .icn{width:11px;height:11px;color:var(--green);flex:none;margin-top:4px}
+.price-meta{font:500 9.5px var(--fm);letter-spacing:.14em;color:var(--dim);margin-top:16px}
+.price-card .btn{margin-top:20px;justify-content:center}
+.price-foot{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:clamp(30px,4vw,44px);font:500 10px var(--fm);letter-spacing:.16em;color:var(--dim)}
+.price-foot span{display:flex;align-items:center;gap:9px}
+.price-foot b{color:var(--green);font-weight:600}
+@media(max-width:1100px){.price-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.price-grid{grid-template-columns:1fr}}
+
+/* ---------- Checkout & payment status ---------- */
+.pay-summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px;border:1px solid rgba(44,245,155,.25);border-radius:10px;background:var(--green-soft);margin-bottom:24px}
+.pay-summary b{font:600 1.35rem var(--fm);color:var(--green);letter-spacing:-.02em}
+.pay-summary span{font:500 10px var(--fm);letter-spacing:.14em;color:var(--muted);text-align:right}
+.pay-state{display:flex;flex-direction:column;align-items:center;text-align:center;padding:26px 6px 10px}
+.pay-state .suc-ico{margin-bottom:18px}
+.pay-state h3{font:600 1.5rem var(--fd);letter-spacing:-.02em}
+.pay-state p{color:var(--muted);line-height:1.75;margin-top:12px;max-width:44ch}
+.pay-ref{font:500 11px var(--fm);letter-spacing:.12em;color:var(--dim);margin-top:16px}
+.pay-ref b{color:var(--ink);font-weight:600}
+.pay-poll{width:34px;height:34px;border:2px solid rgba(44,245,155,.2);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:18px}
+.pay-actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;justify-content:center}
+.pay-secure{display:flex;align-items:center;gap:9px;justify-content:center;margin-top:22px;font:500 9.5px var(--fm);letter-spacing:.16em;color:var(--dim)}
+.pay-secure b{color:var(--green);font-weight:600}
+
 /* ---------- Technology layers ---------- */
 .layers{border:1px solid var(--line);border-radius:16px;background:var(--bg2);overflow:hidden}
 .layer+.layer{border-top:1px solid var(--line)}
@@ -513,6 +549,7 @@ body.has-cursor a,body.has-cursor button,body.has-cursor [role="button"],body.ha
     </a>
     <ul class="nav-links">
       <li><a class="nav-link" href="#servicios">Servicios</a></li>
+      <li><a class="nav-link" href="#precios">Precios</a></li>
       <li><a class="nav-link" href="#proyectos">Proyectos</a></li>
       <li><a class="nav-link" href="#proceso">Proceso</a></li>
       <li><a class="nav-link" href="#tecnologia">Tecnología</a></li>
@@ -530,10 +567,11 @@ body.has-cursor a,body.has-cursor button,body.has-cursor [role="button"],body.ha
   <nav aria-label="Menú móvil">
     <a href="#servicios" style="transition-delay:.05s"><i>01</i>Servicios</a>
     <a href="#automatizacion" style="transition-delay:.1s"><i>02</i>Automatización</a>
-    <a href="#proyectos" style="transition-delay:.15s"><i>03</i>Proyectos</a>
-    <a href="#proceso" style="transition-delay:.2s"><i>04</i>Proceso</a>
-    <a href="#nosotros" style="transition-delay:.25s"><i>05</i>Nosotros</a>
-    <a href="#contacto" style="transition-delay:.3s"><i>06</i>Contacto</a>
+    <a href="#precios" style="transition-delay:.15s"><i>03</i>Precios</a>
+    <a href="#proyectos" style="transition-delay:.2s"><i>04</i>Proyectos</a>
+    <a href="#proceso" style="transition-delay:.25s"><i>05</i>Proceso</a>
+    <a href="#nosotros" style="transition-delay:.3s"><i>06</i>Nosotros</a>
+    <a href="#contacto" style="transition-delay:.35s"><i>07</i>Contacto</a>
   </nav>
   <div class="mmenu-foot">
     <a class="btn" href="#contacto">Solicitar una propuesta</a>
@@ -733,11 +771,28 @@ body.has-cursor a,body.has-cursor button,body.has-cursor [role="button"],body.ha
   </div>
 </section>
 
+<!-- ============ PRECIOS ============ -->
+<section class="section" id="precios">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div class="label"><b>06</b><span class="label-rule"></span>PRECIOS</div>
+      <h2 class="h2">Contrata online, sin esperas.</h2>
+      <p class="lead">Cuatro paquetes listos para contratar al instante con tarjeta, PSE o Nequi. ¿Necesitas algo más ambicioso? <strong>Solicita una propuesta a medida</strong> y lo diseñamos contigo.</p>
+    </div>
+    <div class="price-grid" id="priceGrid"></div>
+    <div class="price-foot" data-reveal>
+      <span><b>PAGO SEGURO</b> TARJETA · PSE · NEQUI</span>
+      <span><b>IVA INCLUIDO</b> PRECIOS FINALES EN COP</span>
+      <span><b>CONFIRMACIÓN</b> RECIBO POR EMAIL AL PAGAR</span>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PROYECTOS ============ -->
 <section class="section" id="proyectos">
   <div class="container">
     <div class="section-head" data-reveal>
-      <div class="label"><b>06</b><span class="label-rule"></span>PROYECTOS</div>
+      <div class="label"><b>07</b><span class="label-rule"></span>PROYECTOS</div>
       <h2 class="h2">Resultados, no promesas.</h2>
       <p class="lead">Casos reales de clientes que convirtieron tecnología y creatividad en crecimiento medible.</p>
     </div>
@@ -750,7 +805,7 @@ body.has-cursor a,body.has-cursor button,body.has-cursor [role="button"],body.ha
 <section class="section" id="tecnologia">
   <div class="container">
     <div class="section-head" data-reveal>
-      <div class="label"><b>07</b><span class="label-rule"></span>TECNOLOGÍA</div>
+      <div class="label"><b>08</b><span class="label-rule"></span>TECNOLOGÍA</div>
       <h2 class="h2">Arquitectura pensada para escalar.</h2>
       <p class="lead">Cada solución se construye sobre una arquitectura moderna, medible y preparada para crecer — de landing page a plataforma completa sin reescribir nada.</p>
     </div>
@@ -763,7 +818,7 @@ body.has-cursor a,body.has-cursor button,body.has-cursor [role="button"],body.ha
   <div class="container">
     <div class="about-grid">
       <div class="about-sticky" data-reveal>
-        <div class="label"><b>08</b><span class="label-rule"></span>NOSOTROS</div>
+        <div class="label"><b>09</b><span class="label-rule"></span>NOSOTROS</div>
         <h2 class="h2">El futuro de los negocios es digital, automatizado e inteligente.</h2>
         <p>Salviadigital nace con una convicción: las tecnologías que antes solo estaban al alcance de grandes empresas —producción aérea, IA, automatización, publicidad de gran formato— deben trabajar para cualquier negocio con ambición.</p>
         <p>Somos estrategas, creativos e ingenieros operando como un solo equipo. No vendemos horas ni paquetes: <strong style="color:var(--ink);font-weight:500">diseñamos sistemas digitales que atraen clientes, automatizan procesos y aceleran el crecimiento.</strong></p>
@@ -789,7 +844,7 @@ body.has-cursor a,body.has-cursor button,body.has-cursor [role="button"],body.ha
   <div class="container">
     <div class="contact-grid">
       <div data-reveal>
-        <div class="label"><b>09</b><span class="label-rule"></span>CONTACTO</div>
+        <div class="label"><b>10</b><span class="label-rule"></span>CONTACTO</div>
         <h2 class="h2">Hablemos de tu proyecto.</h2>
         <p class="lead">Cuéntanos qué necesitas y recibe una propuesta a medida en menos de 24 horas. Sin plantillas, sin compromiso.</p>
         <div class="channels">
@@ -890,6 +945,7 @@ body.has-cursor a,body.has-cursor button,body.has-cursor [role="button"],body.ha
         <p class="foot-cap">EXPLORA</p>
         <ul class="foot-links">
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#precios">Precios</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
           <li><a href="#proceso">Proceso</a></li>
           <li><a href="#tecnologia">Tecnología</a></li>
@@ -903,6 +959,7 @@ body.has-cursor a,body.has-cursor button,body.has-cursor [role="button"],body.ha
       <div>
         <p class="foot-cap">EMPEZAR</p>
         <ul class="foot-links">
+          <li><a href="#precios">Contratar un servicio</a></li>
           <li><a href="#contacto">Solicitar una propuesta</a></li>
           <li><a href="https://wa.me/573155280378" target="_blank" rel="noopener">Hablar con un experto</a></li>
         </ul>
@@ -977,7 +1034,7 @@ const SERVICES = [
           'Cada pieza se produce con estrategia. No volamos por volar: creamos activos visuales pensados para vender, posicionarse y generar contenido que rinde en todos tus canales.'],
     deliverables:['Fotografía aérea profesional','Video cinematográfico 4K','FPV inmersivo','Monitoreo de construcción','Cobertura de eventos','Contenido para redes y publicidad'],
     ideal:'Inmobiliarias, hoteles y resorts, constructoras, eventos y turismo.',
-    metric:['+38%','reservas directas con video aéreo en hoteles'] },
+    metric:['+38%','reservas directas con video aéreo en hoteles'], plan:'tour360' },
   { id:'laser', num:'02', title:'Publicidad y shows láser', hook:'Convierte cualquier espacio en una experiencia de marca.',
     tags:'FACHADAS · GRAN FORMATO', contact:'Publicidad Láser',
     icon:`<svg class="icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -988,7 +1045,7 @@ const SERVICES = [
           'El formato que la gente no solo ve, sino que graba y comparte. Impacto masivo, recordación altísima y una ola de contenido orgánico alrededor de tu marca.'],
     deliverables:['Proyección sobre fachadas','Shows láser sincronizados','Activaciones de marca','Lanzamientos de producto','Campañas outdoor','Contenido para amplificación digital'],
     ideal:'Lanzamientos, retail, eventos masivos y marcas que buscan impacto máximo.',
-    metric:['4,2M','impresiones orgánicas en un lanzamiento'] },
+    metric:['4,2M','impresiones orgánicas en un lanzamiento'], plan:'laser' },
   { id:'web', num:'03', title:'Desarrollo web', hook:'No construimos sitios web. Construimos activos digitales.',
     tags:'WEB · SEO · CRO', contact:'Desarrollo Web',
     icon:`<svg class="icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -999,7 +1056,7 @@ const SERVICES = [
           'Tu web deja de ser un folleto digital y se convierte en tu mejor comercial: capta, convence y mide cada oportunidad.'],
     deliverables:['Sitios corporativos','Landing pages de conversión','E-commerce','Plataformas y portales de cliente','SEO técnico y contenido','Analytics y medición de objetivos'],
     ideal:'Empresas que necesitan captar leads, vender online o digitalizar su operación.',
-    metric:['+120%','leads en 90 días tras un rediseño'] },
+    metric:['+120%','leads en 90 días tras un rediseño'], plan:'landing' },
   { id:'social', num:'04', title:'Presencia digital', hook:'Estrategia de redes que genera crecimiento medible.',
     tags:'REDES · MARCA · DATA', contact:'Redes Sociales',
     icon:`<svg class="icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -1021,7 +1078,7 @@ const SERVICES = [
           'Tu equipo deja de responder mensajes repetitivos y se dedica a lo que genera ingresos: cerrar.'],
     deliverables:['Chatbots con IA','Automatización de WhatsApp','Automatización de Instagram y Messenger','Calificación automática de leads','Agendado de citas','Integración con CRM'],
     ideal:'Negocios que reciben muchos mensajes y pierden leads por responder tarde.',
-    metric:['−70%','tiempo de respuesta, 24/7 real'] },
+    metric:['−70%','tiempo de respuesta, 24/7 real'], plan:'chatbot' },
   { id:'content', num:'06', title:'Automatización de contenido', hook:'Crea una vez. Publica estratégicamente en todas partes.',
     tags:'CONTENIDO · MULTIPLATAFORMA', contact:'Automatización de Contenido',
     icon:`<svg class="icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -1034,6 +1091,30 @@ const SERVICES = [
     ideal:'Marcas que necesitan presencia constante sin un equipo interno grande.',
     metric:['+240%','publicaciones al mes, mismo equipo'] }
 ];
+
+/* Payable packages — display copy mirrors worker/plans.js, but the SERVER
+   is the source of truth for amounts (the client sends only the plan key). */
+const API_BASE = 'https://salvia-form.saviadigital.workers.dev';
+const PRICING = [
+  { plan:'landing', tag:'DESARROLLO WEB', title:'Landing Page de Conversión', price:1490000,
+    hook:'Una página, un objetivo: convertir visitantes en clientes.',
+    feats:['Diseño personalizado mobile-first','Copywriting orientado a conversión','Formulario + botón de WhatsApp','SEO técnico base y analytics','Hasta 5 secciones · 2 rondas de ajustes'],
+    meta:'ENTREGA 10–15 DÍAS HÁBILES' },
+  { plan:'chatbot', tag:'INTELIGENCIA ARTIFICIAL', title:'Agente IA / Chatbot', price:1990000,
+    hook:'Tu negocio atendiendo y vendiendo 24/7 en WhatsApp y web.',
+    feats:['Agente entrenado con tu negocio','WhatsApp, Instagram y web','Calificación automática de leads','Agendado de citas e integración CRM','Panel de métricas + 30 días de soporte'],
+    meta:'IMPLEMENTACIÓN 2–3 SEMANAS' },
+  { plan:'laser', tag:'GRAN FORMATO', title:'Campaña de Publicidad Láser', price:4900000,
+    hook:'Tu marca proyectada sobre una fachada: imposible de ignorar.',
+    feats:['Proyección láser sobre fachada · 1 noche','Diseño y animación del contenido','Equipos y operador certificado','Gestión de permisos y logística','Cobertura foto/video para redes'],
+    meta:'FECHA COORDINADA CONTIGO' },
+  { plan:'tour360', tag:'PRODUCCIÓN AÉREA', title:'Tour Virtual 360° con Dron', price:1290000,
+    hook:'Recorridos inmersivos que venden la propiedad antes de la visita.',
+    feats:['Hasta 3 puntos 360° aéreos o terrestres','Tour interactivo con puntos de interés','Hosting incluido 1 año','Listo para portales inmobiliarios','Clips verticales para redes sociales'],
+    meta:'ENTREGA 5–8 DÍAS HÁBILES' }
+];
+const PLAN_BY_KEY = Object.fromEntries(PRICING.map(p => [p.plan, p]));
+const cop = n => '$' + n.toLocaleString('es-CO');
 
 const PROJECTS = [
   { id:'resort', client:'Costa Azul Resorts', cat:'drones', catLabel:'DRONES', year:'2024', span:'span7', seed:'salvia-resort', img:900, line:'Producción aérea + FPV para temporada alta de un resort turístico.',
@@ -1137,6 +1218,19 @@ const LEGAL = {
     </div>`).join('');
 })();
 
+(function renderPricing(){
+  $('#priceGrid').innerHTML = PRICING.map((p, i) => `
+    <article class="price-card" data-reveal style="--d:${i * 0.07}s">
+      <p class="price-tag">${p.tag}</p>
+      <h3>${p.title}</h3>
+      <p class="price-hook">${p.hook}</p>
+      <div class="price-amount"><b>${cop(p.price)}</b><span>COP · IVA INCL.</span></div>
+      <ul class="price-feats">${p.feats.map(f => `<li>${PLUS}<span>${f}</span></li>`).join('')}</ul>
+      <p class="price-meta">${p.meta}</p>
+      <button class="btn" data-buy="${p.plan}">Contratar ahora ${ARROW}</button>
+    </article>`).join('');
+})();
+
  $('#footServices').innerHTML = SERVICES.map(s => `<li><button data-service-link="${s.id}">${s.title}</button></li>`).join('');
  $('#year').textContent = new Date().getFullYear();
 
@@ -1180,6 +1274,7 @@ function openService(id) {
     </div>
     <div class="m-foot">
       <button class="btn" data-preselect="${s.contact}">Solicitar una propuesta ${ARROW}</button>
+      ${s.plan && PLAN_BY_KEY[s.plan] ? `<a class="btn btn--ghost btn--sm" href="#precios" data-close>Contratar online — ${cop(PLAN_BY_KEY[s.plan].price)}</a>` : ''}
       <span class="m-note">RESPUESTA EN MENOS DE 24 H</span>
     </div>`);
 }
@@ -1209,8 +1304,134 @@ function openLegal(key) {
   modal.open(`<span class="m-num">LEGAL</span><h3 class="m-title">${l.title}</h3><p class="legal-txt" style="margin-top:22px">${l.text}</p>`);
 }
 
+/* ============================================================
+   PAYMENTS — checkout (create → redirect) + return status flow
+   Server decides amounts; client only sends the plan key.
+============================================================ */
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function openCheckout(planKey) {
+  const p = PLAN_BY_KEY[planKey]; if (!p) return;
+  modal.open(`
+    <span class="m-num">CONTRATAR / ${p.tag}</span>
+    <h3 class="m-title">${p.title}</h3>
+    <div class="pay-summary"><b>${cop(p.price)}</b><span>COP · IVA INCLUIDO<br>PAGO ÚNICO</span></div>
+    <form id="checkoutForm" novalidate>
+      <div class="field"><label for="c-nombre">Nombre <i>*</i></label><input id="c-nombre" type="text" autocomplete="name" placeholder="Tu nombre"><small class="ferr"></small></div>
+      <div class="field"><label for="c-email">Email <i>*</i></label><input id="c-email" type="email" autocomplete="email" placeholder="nombre@empresa.com"><small class="ferr"></small></div>
+      <div class="field"><label for="c-tel">Teléfono / WhatsApp</label><input id="c-tel" type="tel" autocomplete="tel" placeholder="+57 300 000 0000"><small class="ferr"></small></div>
+      <button type="submit" class="btn btn--full" id="payBtn">Pagar ${cop(p.price)} COP
+        <svg class="icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        <span class="spinner"></span>
+      </button>
+      <p class="pay-secure"><b>PAGO SEGURO</b> TARJETA · PSE · NEQUI — SERÁS REDIRIGIDO A LA PASARELA</p>
+    </form>`);
+
+  $('#checkoutForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = $('#c-nombre').value.trim(), email = $('#c-email').value.trim(), phone = $('#c-tel').value.trim();
+    const mark = (id, ok, msg) => { const f = document.getElementById(id).closest('.field'); f.classList.toggle('err', !ok); if (!ok) f.querySelector('.ferr').textContent = msg; return ok; };
+    let ok = mark('c-nombre', name.length >= 2, 'Indica tu nombre');
+    ok = mark('c-email', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email), 'Introduce un email válido') && ok;
+    ok = mark('c-tel', phone === '' || /^[+\d][\d\s.-]{6,20}$/.test(phone), 'Introduce un teléfono válido') && ok;
+    if (!ok) return;
+
+    const btn = $('#payBtn');
+    btn.classList.add('loading'); btn.disabled = true;
+    btn.firstChild.textContent = 'Procesando… ';
+    try {
+      const r = await fetch(`${API_BASE}/api/payments/create`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan_key: p.plan, customer: { name, email, phone } })
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || !d.checkout_url) throw new Error(d.error || 'http_' + r.status);
+      try { localStorage.setItem('salvia_last_order', JSON.stringify({ payment_id: d.payment_id, plan_key: p.plan, plan_name: p.title, amount: d.amount, reference: d.reference })); } catch (_) {}
+      window.location.href = d.checkout_url;
+    } catch (err) {
+      btn.classList.remove('loading'); btn.disabled = false;
+      btn.firstChild.textContent = `Pagar ${cop(p.price)} COP `;
+      toast(String(err.message).includes('payments_disabled')
+        ? 'Los pagos online aún no están habilitados — escríbenos por WhatsApp'
+        : 'No pudimos iniciar el pago — reintenta en un momento');
+    }
+  });
+}
+
+/* Hub redirects back to /?mipago=<payment_id> after checkout. */
+(function initPaymentReturn(){
+  const q = new URLSearchParams(location.search);
+  const pid = q.get('mipago');
+  if (!pid || !/^[A-Za-z0-9_-]{6,64}$/.test(pid)) return;
+  history.replaceState(null, '', location.pathname);
+  let stash = {};
+  try { stash = JSON.parse(localStorage.getItem('salvia_last_order') || '{}'); } catch (_) {}
+  const info = stash.payment_id === pid ? stash : {};
+
+  modal.open(`<div class="pay-state">
+    <div class="pay-poll"></div>
+    <h3>Verificando tu pago…</h3>
+    <p>Estamos confirmando la transacción con la pasarela. Esto puede tomar unos segundos — no cierres esta ventana.</p>
+    ${info.reference ? `<p class="pay-ref">REFERENCIA <b>${esc(info.reference)}</b></p>` : ''}
+  </div>`);
+
+  const clearStash = () => { try { localStorage.removeItem('salvia_last_order'); } catch (_) {} };
+  const CHECK = '<div class="suc-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></div>';
+  const CROSS = '<div class="suc-ico" style="border-color:rgba(255,84,112,.5)"><svg viewBox="0 0 24 24" fill="none" stroke="#FF5470" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></div>';
+
+  function success() {
+    clearStash();
+    modal.open(`<div class="pay-state">${CHECK}
+      <h3>¡Pago confirmado!</h3>
+      <p>Tu pago de <strong style="color:var(--ink)">${esc(info.plan_name || 'el servicio')}</strong>${info.amount ? ` por <strong style="color:var(--green)">${cop(info.amount)} COP</strong>` : ''} fue procesado correctamente. Recibirás la confirmación por email y un experto te contactará en menos de 24 horas para coordinar la entrega.</p>
+      ${info.reference ? `<p class="pay-ref">REFERENCIA <b>${esc(info.reference)}</b></p>` : ''}
+      <div class="pay-actions"><a class="btn btn--sm" href="#servicios" data-close>Seguir explorando ${ARROW}</a></div>
+    </div>`);
+    toast('Pago confirmado — ¡gracias por confiar en Salviadigital!');
+  }
+  function failure(state) {
+    clearStash();
+    const MSG = {
+      DECLINED: 'El pago fue rechazado por tu banco o la pasarela. Puedes reintentarlo con otro medio de pago.',
+      ERROR: 'La pasarela reportó un error al procesar el pago. Puedes reintentarlo en unos minutos.',
+      CANCELLED: 'Cancelaste el pago. Cuando quieras, puedes volver a contratar el servicio.',
+      EXPIRED: 'El enlace de pago expiró por seguridad. Inicia de nuevo la contratación.'
+    };
+    modal.open(`<div class="pay-state">${CROSS}
+      <h3>Pago no completado</h3>
+      <p>${MSG[state] || MSG.ERROR}</p>
+      <div class="pay-actions"><a class="btn btn--sm" href="#precios" data-close>Reintentar contratación ${ARROW}</a></div>
+    </div>`);
+  }
+  function timeout() {
+    modal.open(`<div class="pay-state">
+      <div class="pay-poll"></div>
+      <h3>Seguimos verificando…</h3>
+      <p>La pasarela está tardando más de lo habitual. Si tu pago se aprueba, recibirás la confirmación por email en minutos — no necesitas hacer nada más.</p>
+      <div class="pay-actions"><a class="btn btn--ghost btn--sm" href="#inicio" data-close>Volver al inicio</a></div>
+    </div>`);
+  }
+
+  (async () => {
+    for (let i = 0; i < 40; i++) {
+      try {
+        const r = await fetch(`${API_BASE}/api/payments/${pid}/status`);
+        if (r.ok) {
+          const d = await r.json();
+          if (d.status === 'APPROVED') return success();
+          if (['DECLINED', 'ERROR', 'CANCELLED', 'EXPIRED'].includes(d.status)) return failure(d.status);
+        }
+      } catch (_) { /* transient network issue — keep polling */ }
+      await new Promise(res => setTimeout(res, 3000));
+    }
+    timeout();
+  })();
+})();
+
 /* ---------- Modal / section click delegation ---------- */
 document.addEventListener('click', e => {
+  const buy = e.target.closest('[data-buy]');
+  if (buy) { openCheckout(buy.dataset.buy); return; }
   const svc = e.target.closest('[data-service]');
   if (svc) { openService(svc.dataset.service); return; }
   const svcLink = e.target.closest('[data-service-link]');
@@ -1250,7 +1471,7 @@ const sectionObs = new IntersectionObserver(entries => {
     navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
   });
 }, { rootMargin: '-40% 0px -55% 0px' });
-['servicios','proyectos','proceso','tecnologia','nosotros'].forEach(id => { const s = document.getElementById(id); if (s) sectionObs.observe(s); });
+['servicios','precios','proyectos','proceso','tecnologia','nosotros'].forEach(id => { const s = document.getElementById(id); if (s) sectionObs.observe(s); });
 
 const burger = $('#burger'), mmenu = $('#mmenu');
 function toggleMenu(force) {
