@@ -28,10 +28,9 @@ Load before creating, reviewing, or selecting ANY image, video, or audio asset f
 | Need | Action |
 |---|---|
 | Portfolio/hero still | `runway.generate_image`, 16:9, dark cinematic + emerald + "no readable text" |
-| Campaign video | `runway.generate_video` image-to-video from an APPROVED still (pass its Runway `taskId` as `startFrame`) |
+| Campaign video / reels / shorts | Load `../salvia-video-production/SKILL.md` — full video pipeline lives there |
 | Quality gate | `zai analyze_image` / `analyze_video`, one at a time (parallel calls hit HTTP 429) |
 | Ship a still | Convert PNG → WebP q80 (PIL `method=6`); never commit multi-MB PNGs |
-| Motion brief | Describe camera + scene motion only; keep the still's grade |
 
 ## Execution Steps
 

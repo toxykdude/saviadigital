@@ -5,6 +5,7 @@ Site: https://salvia.digital · GitHub Pages from `main` (root deploy) · Push t
 ## Skills
 
 - `salvia-media` — load `skills/salvia-media/SKILL.md` before generating, reviewing, or selecting any image, video, or audio asset for this project (portfolio imagery, marketing campaigns, hero visuals).
+- `salvia-video-production` — load `skills/salvia-video-production/SKILL.md` for any video work (teasers, reels, shorts, animating stills, video post-production). Adapted from the hermes CT100 powerhouse suite.
 
 ## Repo notes
 
