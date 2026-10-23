@@ -50,9 +50,11 @@ Base pattern — subject + "dark cinematic" + "emerald accents" + grade + "no te
 
 ## Video briefs (marketing)
 
-- Pipeline: `generate_video` image-to-video, `startFrame.taskId` = Runway task of an APPROVED still (10s, 720p for tests; 1080p for finals; audio on for ambient).
-- Motion prompt = camera move + environmental motion + keep grade ("slow cinematic aerial push-in… smooth stabilized gimbal motion, premium campaign feel, ambient sound").
-- Review with `zai-mcp-server.analyze_video`: subject match, motion artifacts (warping, flicker, morphing), grade consistency with brand, PASS/FAIL.
+- Pipeline: `generate_video` image-to-video, `startFrame.taskId` = Runway task of an APPROVED still (720p for finals, audio on for ambient).
+- Motion prompt = camera move + environmental motion + keep grade ("slow cinematic aerial drift… smooth stabilized gimbal motion, premium campaign feel, ambient sound").
+- **Anti-warp pattern (mandatory for drone/architecture footage)**: distant high-altitude framing, "very slow" drift, "minimal parallax", "rigid architecture with clean straight lines holds its shape", "calm glassy reflections", "still palm trees". Close-up low-altitude push-ins over pools/palms FAILED review (morphing edges, swimming foliage) on 2026-10-23; the distant-framing rewrite PASSED clean.
+- Review with `zai-mcp-server.analyze_video`: subject match, motion artifacts (warping, flicker, morphing, swimming textures), grade consistency, PASS/FAIL.
+- Credits (2026-10): 10s 720p seedance-2 ≈ 300 credits; 5s 480p seedance-2-fast ≈ 55 credits (quality was review-clean at test scale). Check `whoami` before planning a batch.
 
 ## Pipeline & gotchas
 
