@@ -1123,31 +1123,31 @@ const PLAN_BY_KEY = Object.fromEntries(PRICING.map(p => [p.plan, p]));
 const cop = n => '$' + n.toLocaleString('es-CO');
 
 const PROJECTS = [
-  { id:'resort', client:'Costa Azul Resorts', cat:'drones', catLabel:'DRONES', year:'2024', span:'span7', seed:'salvia-resort', img:900, line:'Producción aérea + FPV para temporada alta de un resort turístico.',
+  { id:'resort', client:'Costa Azul Resorts', cat:'drones', catLabel:'DRONES', year:'2024', span:'span7', line:'Producción aérea + FPV para temporada alta de un resort turístico.',
     challenge:'El resort necesitaba llenar la temporada alta y su material visual no reflejaba la experiencia real del destino.',
     solution:'Producción aérea cinematográfica con recorrido FPV completo: piscinas, zona privada y entorno natural. Piezas adaptadas para web, redes y campañas de reserva directa.',
     results:[['+38%','reservas directas'],['2,1M','visualizaciones'],['×3,4','ROI de campaña']] },
-  { id:'vantia', client:'Grupo Vantia', cat:'laser', catLabel:'LÁSER', year:'2024', span:'span5', seed:'salvia-vantia', img:700, line:'Lanzamiento de producto insignia proyectado sobre fachada corporativa.',
+  { id:'vantia', client:'Grupo Vantia', cat:'laser', catLabel:'LÁSER', year:'2024', span:'span5', line:'Lanzamiento de producto insignia proyectado sobre fachada corporativa.',
     challenge:'Lanzar un producto insignia con impacto masivo sin presupuesto de televisión ni medios tradicionales.',
     solution:'Proyección láser sobre la fachada del edificio corporativo con show sincronizado, diseñado para generar captación orgánica de contenido por el público asistente.',
     results:[['4,2M','impresiones orgánicas'],['+900','seguidores en 48 h'],['18','medios cubrieron el evento']] },
-  { id:'nordika', client:'Nordika Inmobiliaria', cat:'web', catLabel:'WEB', year:'2024', span:'span5', seed:'salvia-nordika', img:700, line:'Rediseño mobile-first con integración CRM para captación de leads.',
+  { id:'nordika', client:'Nordika Inmobiliaria', cat:'web', catLabel:'WEB', year:'2024', span:'span5', line:'Rediseño mobile-first con integración CRM para captación de leads.',
     challenge:'Una web lenta y desactualizada. Los leads llegaban por teléfono y se perdían sin registro ni seguimiento.',
     solution:'Rediseño mobile-first con fichas de propiedades, filtros inteligentes, contacto en dos pasos e integración directa con su CRM comercial.',
     results:[['+120%','leads en 90 días'],['0,9 s','tiempo de carga'],['−45%','coste por lead']] },
-  { id:'aural', client:'Clínica Dental Aural', cat:'automation', catLabel:'AUTOMATIZACIÓN', year:'2025', span:'span7', seed:'salvia-aural', img:900, line:'Agente IA en WhatsApp que responde, califica y agenda citas.',
+  { id:'aural', client:'Clínica Dental Aural', cat:'automation', catLabel:'AUTOMATIZACIÓN', year:'2025', span:'span7', line:'Agente IA en WhatsApp que responde, califica y agenda citas.',
     challenge:'Más de 60 consultas diarias en WhatsApp atendidas en horas. Los pacientes se iban con la competencia mientras esperaban respuesta.',
     solution:'Agente de IA conectado a WhatsApp Business: responde al instante, informa tratamientos y precios, califica la intención y agenda la cita directamente en la agenda del centro.',
     results:[['−70%','tiempo de respuesta'],['+31%','citas agendadas'],['24/7','disponibilidad real']] },
-  { id:'roble', client:'Finca El Roble', cat:'drones', catLabel:'DRONES', year:'2024', span:'span4', seed:'salvia-roble', img:640, line:'Monitorización aérea periódica de 120 hectáreas de cultivo.',
+  { id:'roble', client:'Finca El Roble', cat:'drones', catLabel:'DRONES', year:'2024', span:'span4', line:'Monitorización aérea periódica de 120 hectáreas de cultivo.',
     challenge:'Monitorizar 120 hectáreas de cultivo sin equipo dedicado ni el coste de inspecciones manuales completas.',
     solution:'Vuelos periódicos con dron, ortofotos georreferenciadas e informes automáticos de estado entregados directamente al gestor de la finca.',
     results:[['120 ha','monitorizadas'],['−40%','coste de inspección'],['12','informes al mes']] },
-  { id:'vertice', client:'Vértice Consultores', cat:'automation', catLabel:'AUTOMATIZACIÓN', year:'2025', span:'span8', seed:'salvia-vertice', img:860, line:'Agente IA de calificación de leads B2B integrado con CRM y agenda.',
+  { id:'vertice', client:'Vértice Consultores', cat:'automation', catLabel:'AUTOMATIZACIÓN', year:'2025', span:'span8', line:'Agente IA de calificación de leads B2B integrado con CRM y agenda.',
     challenge:'Leads de LinkedIn que tardaban días en ser contactados por el equipo comercial. Oportunidades que se enfriaban.',
     solution:'Agente de IA de calificación con integración directa al CRM y a la agenda comercial: primer contacto en minutos y reunión propuesta solo a leads viables.',
     results:[['5 min','primer contacto'],['×2,3','tasa de conversión'],['0','leads sin responder']] },
-  { id:'aurora', client:'Tienda Aurora', cat:'social', catLabel:'REDES', year:'2025', span:'span12', seed:'salvia-aurora', img:860, line:'Motor de contenido con auto-publicación en 4 canales para marca de moda.',
+  { id:'aurora', client:'Tienda Aurora', cat:'social', catLabel:'REDES', year:'2025', span:'span12', line:'Motor de contenido con auto-publicación en 4 canales para marca de moda.',
     challenge:'Presencia digital irregular y sin equipo de contenido interno capaz de sostener un ritmo de publicación competitivo.',
     solution:'Motor de contenido completo: calendario editorial, generación asistida por IA, auto-publicación en 4 canales y sistema de reutilización de cada sesión fotográfica.',
     results:[['+240%','publicaciones al mes'],['+180%','alcance orgánico'],['4','canales activos']] }
@@ -1197,7 +1197,7 @@ const LEGAL = {
   $('#pGrid').innerHTML = PROJECTS.map((p, i) => `
     <article class="p-card ${p.span}" data-cat="${p.cat}" data-project="${p.id}" role="button" tabindex="0" data-reveal style="--d:${(i % 3) * 0.08}s" aria-label="Ver caso de ${p.client}">
       <div class="p-media">
-        <img src="https://picsum.photos/seed/${p.seed}/${p.img}/620.jpg" alt="Proyecto ${p.client} — ${p.catLabel}" loading="lazy">
+        <img src="assets/projects/${p.id}.webp" alt="Proyecto ${p.client} — ${p.catLabel}" loading="lazy">
         <span class="p-cat">${p.catLabel}</span><span class="p-year">${p.year}</span>
       </div>
       <div class="p-body">
@@ -1292,7 +1292,7 @@ function openProject(id) {
   modal.open(`
     <span class="m-num">CASO / ${p.catLabel} · ${p.year}</span>
     <h3 class="m-title">${p.client}</h3>
-    <div class="m-media"><img src="https://picsum.photos/seed/${p.seed}/1000/540.jpg" alt="Caso ${p.client}" loading="lazy"></div>
+    <div class="m-media"><img src="assets/projects/${p.id}.webp" alt="Caso ${p.client}" loading="lazy"></div>
     <div class="m-grid">
       <div><p class="m-h">EL DESAFÍO</p><p class="m-ideal">${p.challenge}</p></div>
       <div><p class="m-h">LA SOLUCIÓN</p><p class="m-ideal">${p.solution}</p></div>
